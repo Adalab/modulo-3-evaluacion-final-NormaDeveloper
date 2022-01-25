@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import getApiData from '../services/api';
 import CharactersList from './CharactersList';
 import Filters from './Filters';
+import CharacterDetail from './CharacterDetail';
 
 function App() {
   //State variables
@@ -36,8 +37,18 @@ function App() {
         return cleanObject;
       });
 
+      console.log(filterdData);
+
+      const gryffindorCharacters = filterdData.filter((each) =>
+        each.house
+          .toLocaleLowerCase()
+          .includes('gryffindor'.toLocaleLowerCase())
+      );
+
+      console.log(gryffindorCharacters);
+
       //Guardo el objeto ya filtrado en mi Data
-      setData(filterdData);
+      setData(gryffindorCharacters);
     });
   }, []);
 
@@ -58,7 +69,9 @@ function App() {
 
   const filteredCharacters = data
     .filter((character) =>
-      character.name.toLowerCase().includes(filterName.toLocaleLowerCase())
+      character.name
+        .toLocaleLowerCase()
+        .includes(filterName.toLocaleLowerCase())
     )
     .sort(function (a, b) {
       if (a.name > b.name) {
@@ -80,6 +93,7 @@ function App() {
         updateFilterHouse={updateFilterHouse}
       />
       <CharactersList data={filteredCharacters} />
+      <CharacterDetail />
     </div>
   );
 }

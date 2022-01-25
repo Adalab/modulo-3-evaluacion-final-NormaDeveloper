@@ -8,6 +8,7 @@ import App from './components/App';
 ReactDOM.render(
   //Indicamos que el componente HashRouter es ahora la madre de App
   //Esto hace que App y todos sus comp hijas,nietas.. puedan trabajar con rutas
+
   <HashRouter>
     <App />
   </HashRouter>,

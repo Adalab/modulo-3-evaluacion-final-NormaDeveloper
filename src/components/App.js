@@ -12,7 +12,7 @@ function App() {
   //State variables
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState('');
-  const [filterHouse, setFilterHouse] = useState('All');
+  const [filterHouse, setFilterHouse] = useState('Gryffindor');
   //Global var
   const defaultPhoto =
     'https://via.placeholder.com/210x295/ffffff/666666/?text=HarryPotter';
@@ -31,24 +31,15 @@ function App() {
           alive: each.alive,
           gender: each.gender,
           house: each.house,
+          // id:
         };
 
         //Con el return del map saco el objeto limpio para usarlo en el .then
         return cleanObject;
       });
-
       console.log(filterdData);
-
-      const gryffindorCharacters = filterdData.filter((each) =>
-        each.house
-          .toLocaleLowerCase()
-          .includes('gryffindor'.toLocaleLowerCase())
-      );
-
-      console.log(gryffindorCharacters);
-
       //Guardo el objeto ya filtrado en mi Data
-      setData(gryffindorCharacters);
+      setData(filterdData);
     });
   }, []);
 
@@ -84,6 +75,7 @@ function App() {
     .filter((character) =>
       filterHouse === 'All' ? true : filterHouse === character.house
     );
+
   return (
     <div>
       <h2>HARRY POTTER</h2>

@@ -1,8 +1,6 @@
-// Fichero src/components/App.js
-
-import { Link, Route, Switch } from 'react-router-dom'; // importo componentes
-import '../styles/App.scss';
+import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import '../styles/App.scss';
 import getApiData from '../services/api';
 import CharactersList from './CharactersList';
 import Filters from './Filters';
@@ -24,7 +22,7 @@ function App() {
   //UseEffect Api
   useEffect(() => {
     getApiData(URL, filterHouse).then((dataFromApi) => {
-      const filterdData = dataFromApi.map((each) => {
+      const filterdData = dataFromApi.map((each, index) => {
         const cleanObject = {
           name: each.name,
           photo:
@@ -35,7 +33,7 @@ function App() {
           alive: each.alive,
           gender: each.gender === 'female' ? 'Mujer' : 'Hombre',
           house: each.house,
-          id: Math.ceil(Math.random() * 10000),
+          id: index,
         };
 
         //Con el return del map saco el objeto limpio para usarlo en el .then
@@ -77,13 +75,15 @@ function App() {
       return 0;
     });
 
-  const renderDetail = (routerData) => {
+  const renderDetail = (routeData) => {
     //Recieve by props all the url info
     //But we need just the ID (path="/character/:characterId")
-    console.log(routerData);
-    const pathId = routerData.match.params.characterId;
+    console.log(routeData);
+    const pathId = routeData.match.params.characterId;
     //So we can select that specific character from my dataArr
-    const foundCharacter = data.find((character) => character.id === pathId);
+    const foundCharacter = data.find(
+      (character) => character.id === parseInt(pathId)
+    );
 
     console.log(foundCharacter);
 
@@ -114,7 +114,7 @@ function App() {
             //When it finds this pattern...
             path="/character/:characterId"
             //...it will execute this function to render the detail
-            renderDetail={renderDetail}
+            render={renderDetail}
           />
 
           <Route path="/">

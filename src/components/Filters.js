@@ -1,14 +1,11 @@
 import FilterName from './FilterName';
 import FilterHouse from './FilterHouse';
-const handleForm = (e) => {
-  e.prevent.Default();
-};
 
 const Filters = (props) => {
   return (
     <section className="Filter">
       <h2>Filtrado</h2>
-      <form action="" onSubmit={handleForm}>
+      <form action="" onSubmit={(e) => e.preventDefault()}>
         {/* -----------NAME----------- */}
         <FilterName
           updateFilterName={props.updateFilterName}

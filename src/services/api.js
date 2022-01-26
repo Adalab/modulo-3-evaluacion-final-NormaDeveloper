@@ -1,8 +1,6 @@
-const callToApi = (data) => {
+const callToApi = (URL, valueHouse) => {
   // Llamamos al API
-  return fetch('https://hp-api.herokuapp.com/api/characters/').then(
-    (response) => response.json()
-  );
+  return fetch(URL + valueHouse).then((response) => response.json());
 };
 
 export default callToApi;

@@ -15,12 +15,15 @@ function App() {
   const [filterName, setFilterName] = useState('');
   const [filterHouse, setFilterHouse] = useState('Gryffindor');
   //Global var
+  const URL = 'https://hp-api.herokuapp.com/api/characters/house/';
+
   const defaultPhoto =
     'https://via.placeholder.com/210x295/ffffff/666666/?text=HarryPotter';
 
   //Hooks
+  //UseEffect Api
   useEffect(() => {
-    getApiData().then((dataFromApi) => {
+    getApiData(URL, filterHouse).then((dataFromApi) => {
       const filterdData = dataFromApi.map((each) => {
         const cleanObject = {
           name: each.name,
@@ -30,19 +33,19 @@ function App() {
               : each.image,
           species: each.species,
           alive: each.alive,
-          gender: each.gender,
+          gender: each.gender === 'female' ? 'Mujer' : 'Hombre',
           house: each.house,
-          id: `${each.name} ${each.dateOfBirth}`,
+          id: Math.ceil(Math.random() * 10000),
         };
 
         //Con el return del map saco el objeto limpio para usarlo en el .then
         return cleanObject;
       });
       console.log(filterdData);
-      //Guardo el objeto ya filtrado en mi Data
+      //Save filtered object in Data
       setData(filterdData);
     });
-  }, []);
+  }, [filterHouse]);
 
   console.log(data);
 
@@ -72,10 +75,7 @@ function App() {
         return -1;
       }
       return 0;
-    })
-    .filter((character) =>
-      filterHouse === 'All' ? true : filterHouse === character.house
-    );
+    });
 
   const renderDetail = (routerData) => {
     //Recieve by props all the url info
@@ -98,30 +98,33 @@ function App() {
   return (
     <div>
       <h2>HARRY POTTER</h2>
-      <Switch>
-        <Route exact path="/">
-          <Filters
-            updateFilterName={updateFilterName}
-            filterName={filterName}
-            updateFilterHouse={updateFilterHouse}
+      {/* <Header/> */}
+      <main>
+        <Switch>
+          <Route exact path="/">
+            <Filters
+              updateFilterName={updateFilterName}
+              filterName={filterName}
+              updateFilterHouse={updateFilterHouse}
+            />
+            <CharactersList data={filteredCharacters} />
+          </Route>
+          <Route
+            exact
+            //When it finds this pattern...
+            path="/character/:characterId"
+            //...it will execute this function to render the detail
+            renderDetail={renderDetail}
           />
-          <CharactersList data={filteredCharacters} />
-        </Route>
-        <Route
-          exact
-          //When it finds this pattern...
-          path="/character/:characterId"
-          //...it will execute this function to render the detail
-          renderDetail={renderDetail}
-        />
 
-        <Route path="/">
-          <h2>Página no encontrada</h2>
-          <Link to="/">
-            <p> Volver </p>
-          </Link>
-        </Route>
-      </Switch>
+          <Route path="/">
+            <h2>Página no encontrada</h2>
+            <Link to="/">
+              <p> Volver </p>
+            </Link>
+          </Route>
+        </Switch>
+      </main>
     </div>
   );
 }

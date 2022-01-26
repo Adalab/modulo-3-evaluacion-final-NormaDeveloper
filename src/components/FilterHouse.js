@@ -11,7 +11,6 @@ const FilterHouse = (props) => {
         id="house"
         className="house"
       >
-        <option value="All">Todos</option>
         <option value="Gryffindor">Gryffindor</option>
         <option value="Hufflepuff">Hufflepuff</option>
         <option value="Ravenclaw">Ravenclaw</option>

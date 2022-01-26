@@ -1,4 +1,4 @@
-import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../styles/App.scss';
 import getApiData from '../services/api';
@@ -30,7 +30,7 @@ function App() {
               ? each.image.replace(each.image, defaultPhoto)
               : each.image,
           species: each.species,
-          alive: each.alive,
+          alive: each.alive ? 'Vivo' : 'Muerto',
           gender: each.gender === 'female' ? 'Mujer' : 'Hombre',
           house: each.house,
           id: index,

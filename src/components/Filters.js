@@ -1,5 +1,6 @@
 import FilterName from './FilterName';
 import FilterHouse from './FilterHouse';
+import FilterSpecies from './FilterSpecies';
 import Button from './Button';
 
 const Filters = (props) => {
@@ -16,6 +17,12 @@ const Filters = (props) => {
         <FilterHouse
           updateFilterHouse={props.updateFilterHouse}
           filterHouse={props.filterHouse}
+        />
+        {/* -----------SPECIES----------- */}
+        <FilterSpecies
+          data={props.data}
+          checkboxSelectedList={props.checkboxSelectedList}
+          updateCheckboxes={props.updateCheckboxes}
         />
         <Button resetInputs={props.resetInputs} />
       </form>

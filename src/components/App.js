@@ -15,6 +15,8 @@ function App() {
   const [filterHouse, setFilterHouse] = useState(
     ls.get('filterHouse', 'gryffindor')
   );
+  const [checkboxSelectedList, setCheckboxSelectedList] = useState([]);
+
   //Global var
   const URL = 'https://hp-api.herokuapp.com/api/characters/house/';
 
@@ -68,6 +70,17 @@ function App() {
     setFilterHouse(inputValue);
   };
 
+  const updateCheckboxes = (value, checked) => {
+    console.log(value);
+    console.log(checked);
+    checked
+      ? setCheckboxSelectedList([...checkboxSelectedList, value])
+      : setCheckboxSelectedList(
+          checkboxSelectedList.filter((each) => each !== value)
+        );
+  };
+  console.log(checkboxSelectedList);
+
   const resetInputs = () => {
     setFilterName('');
     setFilterHouse('gryffindor');
@@ -88,8 +101,14 @@ function App() {
         return -1;
       }
       return 0;
-    });
+    })
+    .filter((character) =>
+      checkboxSelectedList.length === 0
+        ? true
+        : checkboxSelectedList.includes(character.species)
+    );
 
+  //FILTRO DE CHECKNBOXES
   const renderDetail = (routeData) => {
     //Recieve by props all the url info
     //But we need just the ID (path="/character/:characterId")
@@ -123,6 +142,9 @@ function App() {
               updateFilterHouse={updateFilterHouse}
               filterHouse={filterHouse}
               resetInputs={resetInputs}
+              data={data}
+              checkboxSelectedList={checkboxSelectedList}
+              updateCheckboxes={updateCheckboxes}
             />
 
             <CharactersList data={filteredCharacters} />

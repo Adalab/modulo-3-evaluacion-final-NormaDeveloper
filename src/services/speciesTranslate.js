@@ -3,16 +3,10 @@ const speciesTranslate = (species) => {
     return (species = 'Humano');
   } else if (species === 'half-giant') {
     return (species = 'Medio gigante');
-  } else if (species === 'warewolf') {
+  } else if (species === 'werewolf') {
     return (species = 'Hombre lobo');
   } else if (species === 'ghost') {
     return (species = 'Fantasma');
-  } else if (species === 'cat') {
-    return (species = 'Gato');
-  } else if (species === 'Goblin') {
-    return (species = 'Duende');
-  } else if (species === 'Owl') {
-    return (species = 'Lechuza');
   } else {
     return (species = 'No definida');
   }

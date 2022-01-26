@@ -8,7 +8,7 @@ const FilterName = (props) => {
       <input
         type="text"
         onChange={handleFilterName}
-        value={props.value}
+        value={props.filterName}
         id="name"
         name="filterName"
       />

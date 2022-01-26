@@ -1,5 +1,6 @@
 import FilterName from './FilterName';
 import FilterHouse from './FilterHouse';
+import Button from './Button';
 
 const Filters = (props) => {
   return (
@@ -12,7 +13,11 @@ const Filters = (props) => {
           filterName={props.filterName}
         />
         {/* -----------HOUSE----------- */}
-        <FilterHouse updateFilterHouse={props.updateFilterHouse} />
+        <FilterHouse
+          updateFilterHouse={props.updateFilterHouse}
+          filterHouse={props.filterHouse}
+        />
+        <Button resetInputs={props.resetInputs} />
       </form>
     </section>
   );

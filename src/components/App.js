@@ -2,6 +2,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../styles/App.scss';
 import getApiData from '../services/api';
+import ls from '../services/localStorage';
 import CharactersList from './CharactersList';
 import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
@@ -9,9 +10,11 @@ import CharacterNotFound from './CharacterNotFound';
 
 function App() {
   //State variables
-  const [data, setData] = useState([]);
-  const [filterName, setFilterName] = useState('');
-  const [filterHouse, setFilterHouse] = useState('Gryffindor');
+  const [data, setData] = useState(ls.get('data', []));
+  const [filterName, setFilterName] = useState(ls.get('filterName', ''));
+  const [filterHouse, setFilterHouse] = useState(
+    ls.get('filterHouse', 'gryffindor')
+  );
   //Global var
   const URL = 'https://hp-api.herokuapp.com/api/characters/house/';
 
@@ -19,6 +22,13 @@ function App() {
     'https://via.placeholder.com/210x295/ffffff/666666/?text=HarryPotter';
 
   //Hooks
+  //UseEffect LS
+  useEffect(() => {
+    ls.set('data', data);
+    ls.set('filterHouse', filterHouse);
+    ls.set('filterName', filterName);
+  }, [data, filterHouse, filterName]);
+
   //UseEffect Api
   useEffect(() => {
     getApiData(URL, filterHouse).then((dataFromApi) => {
@@ -36,7 +46,7 @@ function App() {
           id: index,
         };
 
-        //Con el return del map saco el objeto limpio para usarlo en el .then
+        //Get clean object with map's return, so we can use it in .then
         return cleanObject;
       });
       console.log(filterdData);
@@ -58,8 +68,13 @@ function App() {
     setFilterHouse(inputValue);
   };
 
-  //variables or functions with html
+  const resetInputs = () => {
+    setFilterName('');
+    setFilterHouse('gryffindor');
+    ls.clear();
+  };
 
+  //variables or functions with html
   const filteredCharacters = data
     .filter((character) =>
       character.name
@@ -106,7 +121,10 @@ function App() {
               updateFilterName={updateFilterName}
               filterName={filterName}
               updateFilterHouse={updateFilterHouse}
+              filterHouse={filterHouse}
+              resetInputs={resetInputs}
             />
+
             <CharactersList data={filteredCharacters} />
           </Route>
           <Route

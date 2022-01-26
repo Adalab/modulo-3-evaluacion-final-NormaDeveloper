@@ -10,6 +10,7 @@ const FilterHouse = (props) => {
         name="house"
         id="house"
         className="house"
+        value={props.filterHouse}
       >
         <option value="Gryffindor">Gryffindor</option>
         <option value="Hufflepuff">Hufflepuff</option>

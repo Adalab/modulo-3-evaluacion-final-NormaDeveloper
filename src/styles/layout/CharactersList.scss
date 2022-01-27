@@ -1,0 +1,18 @@
+@import '../core/variables.scss';
+.characters_list {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 0px 50px;
+  }
+}
+// .results {
+//   text-align: center;
+//   color: $wine;
+//   font-size: 19px;
+//   @include tablet {
+//     font-size: 35px;
+//   }

@@ -1,0 +1,26 @@
+@import '../core/variables.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: $darkYellow;
+  height: 305px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: $font-grey;
+  padding: 100px 0px;
+  margin-top: 40px;
+
+  &__logo {
+    width: 20px;
+    height: 30px;
+  }
+}
+
+.github {
+  color: #740001;
+  cursor: pointer;
+}

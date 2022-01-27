@@ -1,0 +1,13 @@
+@import './core/reset.scss';
+@import './core/variables.scss';
+body {
+  background-color: rgb(97, 107, 126);
+  color: white;
+  font-family: 'MedievalSharp', cursive;
+}
+
+// .modalContainer {
+//   @include tablet {
+//     position: relative;
+//   }
+// }

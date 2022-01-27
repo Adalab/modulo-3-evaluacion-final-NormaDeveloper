@@ -1,5 +1,3 @@
-// Fichero src/index.js (código nuevo)
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom'; //digo q voy a usar rutas cn Hash
@@ -14,5 +12,3 @@ ReactDOM.render(
   </HashRouter>,
   document.getElementById('root')
 );
-
-// en el futuro cuando tengas acceso a la configuración de tu servidor y puedas usar el sistema moderno de rutas, tienes que cambiar en este fichero la palabra HashRouter por BrowserRouter . Todo lo demás funciona igual

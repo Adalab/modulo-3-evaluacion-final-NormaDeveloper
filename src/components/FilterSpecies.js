@@ -1,5 +1,5 @@
 import speciesTranslate from '../services/speciesTranslate';
-
+import '../styles/layout/FilterSpecies.scss';
 const FilterSpecies = (props) => {
   const getSpecies = () => {
     const species = props.data.map((user) => user.species);
@@ -8,7 +8,6 @@ const FilterSpecies = (props) => {
     return uniques;
   };
   const notRepeatedSpecies = getSpecies();
-  console.log(notRepeatedSpecies);
 
   const handleChangeCheckbox = (e) => {
     const value = e.currentTarget.value;
@@ -17,21 +16,24 @@ const FilterSpecies = (props) => {
   };
 
   const htmlCheckboxes = notRepeatedSpecies.map((specie, index) => (
-    <label key={index} htmlFor={specie}>
-      {speciesTranslate(specie)}
+    <label className="checkbox" key={index} htmlFor={specie}>
+      <span>{speciesTranslate(specie)} </span>
       <input
         onChange={handleChangeCheckbox}
         type="checkbox"
         id={specie}
-        name="city"
+        name="species"
         value={specie}
+        className="box"
       />
     </label>
   ));
 
   return (
     <>
-      <label htmlFor="Species">Especies: </label>
+      <label className="speciesLabel" htmlFor="Species">
+        Selecciona la especie
+      </label>
       {htmlCheckboxes}
     </>
   );

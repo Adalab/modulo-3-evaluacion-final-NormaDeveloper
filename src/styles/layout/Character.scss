@@ -1,0 +1,13 @@
+@import '../core/variables.scss';
+
+.characterImg {
+  padding-top: 30px;
+  margin-bottom: 10px;
+  width: 120px;
+  height: 190px;
+  border-radius: 50%;
+}
+
+.character__link {
+  color: $wine;
+}

@@ -1,5 +1,5 @@
 const callToApi = (URL, valueHouse) => {
-  // Llamamos al API
+  // Call API
   return fetch(URL + valueHouse).then((response) => response.json());
 };
 

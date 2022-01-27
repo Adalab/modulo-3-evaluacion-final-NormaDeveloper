@@ -1,13 +1,26 @@
+import '../styles/layout/CharactersList.scss';
 import Character from './Character';
+import propTypes from 'prop-types';
 const CharactersList = (props) => {
-  const htmlList = props.data.map((character, index) => {
+  const { data } = props;
+  const htmlList = data.map((character, index) => {
     return (
       <li key={index}>
         <Character character={character} />
       </li>
     );
   });
-  return <ul>{htmlList}</ul>;
+  //If data arr is empty, then shows loading
+  //Render <p> while while loading data
+  return data.length === 0 ? (
+    <p>Cargando datos</p>
+  ) : (
+    <ul className="characters_list">{htmlList}</ul>
+  );
+};
+
+CharactersList.propTypes = {
+  data: propTypes.arrayOf(propTypes.object).isRequired,
 };
 
 export default CharactersList;

@@ -1,15 +1,16 @@
+import '../styles/layout/FilterHouse.scss';
 const FilterHouse = (props) => {
   const handleFilterHouse = (e) => {
     props.updateFilterHouse(e.currentTarget.value);
   };
   return (
-    <label htmlFor="house">
-      House
+    <label htmlFor="house" className="houseLabel">
+      Selecciona la casa
       <select
         onChange={handleFilterHouse}
         name="house"
         id="house"
-        className="house"
+        className="inputHouse"
         value={props.filterHouse}
       >
         <option value="Gryffindor">Gryffindor</option>

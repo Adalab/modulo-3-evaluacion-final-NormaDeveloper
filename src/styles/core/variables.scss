@@ -1,0 +1,18 @@
+$darkYellow: rgb(211, 166, 37);
+$arrow-white: #bebdbe;
+$font-grey: #4a4a4a;
+$mainBackGrey: rgb(97, 107, 126);
+$wine: #740001;
+
+$mainFont: 'Loved by the King', cursive;
+$medieval: 'MedievalSharp', cursive;
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}

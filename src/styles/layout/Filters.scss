@@ -1,0 +1,32 @@
+@import '../core/variables.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: $mainBackGrey;
+  padding: 90px 40px 10px;
+  font-size: 14px;
+  height: 500px;
+  @include tablet {
+    font-size: 24px;
+    text-align: justify;
+    width: 50%;
+    height: 500px;
+  }
+
+  &__checkboxes {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 140px;
+    @include tablet {
+      height: 200px;
+    }
+  }
+  &__select {
+    margin-top: 20px;
+    @include tablet {
+      font-size: 24px;
+    }
+  }
+}

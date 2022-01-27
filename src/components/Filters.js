@@ -2,31 +2,38 @@ import FilterName from './FilterName';
 import FilterHouse from './FilterHouse';
 import FilterSpecies from './FilterSpecies';
 import Button from './Button';
+import '../styles/layout/Filters.scss';
 
 const Filters = (props) => {
   return (
-    <section className="Filter">
-      <h2>Filtrado</h2>
-      <form action="" onSubmit={(e) => e.preventDefault()}>
+    <div className="formContainer">
+      <form className="form" action="" onSubmit={(e) => e.preventDefault()}>
         {/* -----------NAME----------- */}
-        <FilterName
-          updateFilterName={props.updateFilterName}
-          filterName={props.filterName}
-        />
+        <section className="form__name">
+          <FilterName
+            updateFilterName={props.updateFilterName}
+            filterName={props.filterName}
+          />
+        </section>
         {/* -----------HOUSE----------- */}
-        <FilterHouse
-          updateFilterHouse={props.updateFilterHouse}
-          filterHouse={props.filterHouse}
-        />
+        <section className="form__select">
+          <FilterHouse
+            updateFilterHouse={props.updateFilterHouse}
+            filterHouse={props.filterHouse}
+          />
+        </section>
         {/* -----------SPECIES----------- */}
-        <FilterSpecies
-          data={props.data}
-          checkboxSelectedList={props.checkboxSelectedList}
-          updateCheckboxes={props.updateCheckboxes}
-        />
+        <section className="form__checkboxes">
+          <FilterSpecies
+            data={props.data}
+            checkboxSelectedList={props.checkboxSelectedList}
+            updateCheckboxes={props.updateCheckboxes}
+          />
+        </section>
+
         <Button resetInputs={props.resetInputs} />
       </form>
-    </section>
+    </div>
   );
 };
 export default Filters;

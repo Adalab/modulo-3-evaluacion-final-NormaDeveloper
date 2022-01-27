@@ -1,12 +1,15 @@
+import '../styles/App.scss';
 import { Link, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import '../styles/App.scss';
 import getApiData from '../services/api';
 import ls from '../services/localStorage';
 import CharactersList from './CharactersList';
 import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
 import CharacterNotFound from './CharacterNotFound';
+import Header from './Header';
+import Footer from './Footer';
+import placeholderImg from '../images/placeholderPhoto.png';
 
 function App() {
   //State variables
@@ -15,13 +18,14 @@ function App() {
   const [filterHouse, setFilterHouse] = useState(
     ls.get('filterHouse', 'gryffindor')
   );
-  const [checkboxSelectedList, setCheckboxSelectedList] = useState([]);
+  const [checkboxSelectedList, setCheckboxSelectedList] = useState(
+    ls.get('checkboxSelectedList', [])
+  );
 
   //Global var
   const URL = 'https://hp-api.herokuapp.com/api/characters/house/';
 
-  const defaultPhoto =
-    'https://via.placeholder.com/210x295/ffffff/666666/?text=HarryPotter';
+  const defaultPhoto = placeholderImg;
 
   //Hooks
   //UseEffect LS
@@ -29,7 +33,8 @@ function App() {
     ls.set('data', data);
     ls.set('filterHouse', filterHouse);
     ls.set('filterName', filterName);
-  }, [data, filterHouse, filterName]);
+    ls.set('checkboxSelectedList', checkboxSelectedList);
+  }, [data, filterHouse, filterName, checkboxSelectedList]);
 
   //UseEffect Api
   useEffect(() => {
@@ -51,39 +56,33 @@ function App() {
         //Get clean object with map's return, so we can use it in .then
         return cleanObject;
       });
-      console.log(filterdData);
+
       //Save filtered object in Data
       setData(filterdData);
     });
   }, [filterHouse]);
 
-  console.log(data);
-
   //Events functions
   const updateFilterName = (inputValue) => {
-    console.log(inputValue);
     setFilterName(inputValue);
   };
 
   const updateFilterHouse = (inputValue) => {
-    console.log(inputValue);
     setFilterHouse(inputValue);
   };
 
   const updateCheckboxes = (value, checked) => {
-    console.log(value);
-    console.log(checked);
     checked
       ? setCheckboxSelectedList([...checkboxSelectedList, value])
       : setCheckboxSelectedList(
           checkboxSelectedList.filter((each) => each !== value)
         );
   };
-  console.log(checkboxSelectedList);
 
   const resetInputs = () => {
     setFilterName('');
     setFilterHouse('gryffindor');
+    setCheckboxSelectedList([]);
     ls.clear();
   };
 
@@ -108,18 +107,15 @@ function App() {
         : checkboxSelectedList.includes(character.species)
     );
 
-  //FILTRO DE CHECKNBOXES
   const renderDetail = (routeData) => {
     //Recieve by props all the url info
     //But we need just the ID (path="/character/:characterId")
-    console.log(routeData);
+
     const pathId = routeData.match.params.characterId;
     //So we can select that specific character from my dataArr
     const foundCharacter = data.find(
       (character) => character.id === parseInt(pathId)
     );
-
-    console.log(foundCharacter);
 
     return !foundCharacter ? (
       <CharacterNotFound />
@@ -130,10 +126,9 @@ function App() {
   };
 
   return (
-    <div>
-      <h2>HARRY POTTER</h2>
-      {/* <Header/> */}
-      <main>
+    <div className="wholePage">
+      <Header />
+      <main className="main">
         <Switch>
           <Route exact path="/">
             <Filters
@@ -149,13 +144,15 @@ function App() {
 
             <CharactersList data={filteredCharacters} />
           </Route>
-          <Route
-            exact
-            //When it finds this pattern...
-            path="/character/:characterId"
-            //...it will execute this function to render the detail
-            render={renderDetail}
-          />
+          <div className="modalContainer">
+            <Route
+              exact
+              //When it finds this pattern...
+              path="/character/:characterId"
+              //...it will execute this function to render the detail
+              render={renderDetail}
+            />
+          </div>
 
           <Route path="/">
             <h2>Página no encontrada</h2>
@@ -165,6 +162,7 @@ function App() {
           </Route>
         </Switch>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,12 @@
+import '../styles/layout/Button.scss';
+
 function Button(props) {
   const handleResetBtn = (e) => {
     props.resetInputs();
   };
   return (
-    <button className="btn" onClick={handleResetBtn}>
-      Reset
+    <button className="reset" onClick={handleResetBtn}>
+      RESET
     </button>
   );
 }

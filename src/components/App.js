@@ -10,6 +10,7 @@ import CharacterNotFound from './CharacterNotFound';
 import Header from './Header';
 import Footer from './Footer';
 import placeholderImg from '../images/placeholderPhoto.png';
+import PlaySound from './PlaySound';
 
 function App() {
   //State variables
@@ -128,9 +129,11 @@ function App() {
   return (
     <div className="wholePage">
       <Header />
+
       <main className="main">
         <Switch>
           <Route exact path="/">
+            <PlaySound />
             <Filters
               updateFilterName={updateFilterName}
               filterName={filterName}

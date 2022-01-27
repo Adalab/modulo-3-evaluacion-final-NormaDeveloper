@@ -13,7 +13,7 @@ const CharactersList = (props) => {
   //If data arr is empty, then shows loading
   //Render <p> while while loading data
   return data.length === 0 ? (
-    <p>Cargando datos</p>
+    <p className="notExist">No existe ningún personaje con ese nombre</p>
   ) : (
     <ul className="characters_list">{htmlList}</ul>
   );

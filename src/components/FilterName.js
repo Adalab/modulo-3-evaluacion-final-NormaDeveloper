@@ -5,7 +5,7 @@ const FilterName = (props) => {
   };
   return (
     <label htmlFor="name" className="filterName__label">
-      Busca tu personaje
+      <span className="nameSpan">Busca tu personaje</span>
       <input
         type="text"
         onChange={handleFilterName}

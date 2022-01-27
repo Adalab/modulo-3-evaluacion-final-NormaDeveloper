@@ -9,9 +9,15 @@
   margin-left: 10px;
   color: #4a4a4a;
   background-color: $mainBackGrey;
+  width: 100%;
+  font-size: 18px;
 
   @include tablet {
-    width: 50%;
+    width: 100%;
+    font-size: 18px;
+  }
+  @include desktop {
+    width: 100%;
     font-size: 18px;
   }
 
@@ -22,11 +28,21 @@
 
   &::placeholder {
     color: rgb(85, 79, 79);
-    font-size: 18px;
+    font-size: 13px;
     background-color: $mainBackGrey;
+    @include desktop {
+      font-size: 17px;
+    }
   }
 }
 
 .filterName__label {
   color: $darkYellow;
+  font-size: 18px;
+}
+
+.nameSpan {
+  @include tablet {
+    display: block;
+  }
 }

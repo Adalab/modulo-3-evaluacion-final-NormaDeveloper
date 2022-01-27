@@ -2,7 +2,6 @@
 
 .reset {
   font-family: $medieval;
-
   font-weight: 900;
   margin-top: 20px;
   margin-left: 40px;
@@ -23,6 +22,10 @@
     margin-top: 20px;
     margin-left: 0px;
     margin-right: 0px;
+    @include desktop {
+      width: 100%;
+      margin-bottom: 20px;
+    }
   }
 
   &:hover {

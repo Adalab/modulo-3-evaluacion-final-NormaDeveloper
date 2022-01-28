@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "./static/css/main.f54d84ff.css",
-    "main.js": "./static/js/main.18dce015.js",
-    "static/media/hp_Theme_Song.mp3": "./static/media/hp_Theme_Song.3a16a27fb78028f76531.mp3",
+    "main.css": "./static/css/main.7999b76a.css",
+    "main.js": "./static/js/main.4d19f2f3.js",
+    "static/media/backgroundDetail.png": "./static/media/backgroundDetail.f2dbe5ffcd91aeb38135.png",
+    "static/media/marcoHP.png": "./static/media/marcoHP.13cc37749c5d83b1bdb8.png",
     "static/media/logo_hp.png": "./static/media/logo_hp.dfd3cdcf83e1d6a0f758.png",
+    "static/media/LOADERharry.gif": "./static/media/LOADERharry.4b5fbe43da0c7ac9ef6a.gif",
     "static/media/placeholderPhoto.png": "./static/media/placeholderPhoto.20e81c5fcbbf9db15937.png",
     "index.html": "./index.html",
-    "main.f54d84ff.css.map": "./static/css/main.f54d84ff.css.map",
-    "main.18dce015.js.map": "./static/js/main.18dce015.js.map"
+    "main.7999b76a.css.map": "./static/css/main.7999b76a.css.map",
+    "main.4d19f2f3.js.map": "./static/js/main.4d19f2f3.js.map"
   },
   "entrypoints": [
-    "static/css/main.f54d84ff.css",
-    "static/js/main.18dce015.js"
+    "static/css/main.7999b76a.css",
+    "static/js/main.4d19f2f3.js"
   ]
 }

@@ -4,6 +4,7 @@ import FilterSpecies from './FilterSpecies';
 import Button from './Button';
 import '../styles/layout/Filters.scss';
 import FilterAlive from './FilterAlive';
+import SortName from './SortName';
 
 const Filters = (props) => {
   return (
@@ -32,12 +33,16 @@ const Filters = (props) => {
           />
         </section>
         {/* -----------ALIVE----------- */}
-
         <FilterAlive
           updateAliveCheckbox={props.updateAliveCheckbox}
           alive={props.alive}
         />
 
+        {/* -----------SORT-ALPHABETICALLY----------- */}
+        <SortName
+          updateSortName={props.updateSortName}
+          checked={props.checked}
+        />
         <Button resetInputs={props.resetInputs} />
       </form>
     </div>

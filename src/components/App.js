@@ -23,6 +23,8 @@ function App() {
     ls.get('checkboxSelectedList', [])
   );
   const [showDead, setShowDead] = useState(false);
+  const [sortCheckboxes, setSortCheckboxes] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   //Global var
   const URL = 'https://hp-api.herokuapp.com/api/characters/house/';
@@ -39,6 +41,7 @@ function App() {
 
   //UseEffect Api
   useEffect(() => {
+    setIsLoading(true);
     getApiData(URL, filterHouse).then((dataFromApi) => {
       const filterdData = dataFromApi.map((each, index) => {
         const cleanObject = {
@@ -60,6 +63,7 @@ function App() {
 
       //Save filtered object in Data
       setData(filterdData);
+      setIsLoading(false);
     });
   }, [filterHouse]);
 
@@ -84,6 +88,10 @@ function App() {
     setShowDead(checked);
   };
 
+  const updateSortName = (checked) => {
+    setSortCheckboxes(checked);
+  };
+
   const resetInputs = () => {
     setFilterName('');
     setFilterHouse('gryffindor');
@@ -98,24 +106,26 @@ function App() {
         .toLocaleLowerCase()
         .includes(filterName.toLocaleLowerCase())
     )
-    .sort(function (a, b) {
-      if (a.name > b.name) {
-        return 1;
-      } else if (a.name < b.name) {
-        return -1;
-      }
-      return 0;
-    })
+
     .filter((character) =>
       checkboxSelectedList.length === 0
         ? true
         : checkboxSelectedList.includes(character.species)
     )
     .filter((character) => {
-      console.log(character.alive);
-
       return showDead ? character.alive === 'Muerto' : true;
+    })
+    .sort(function (a, b) {
+      if (sortCheckboxes) {
+        if (a.name > b.name) {
+          return 1;
+        } else if (a.name < b.name) {
+          return -1;
+        }
+        return 0;
+      }
     });
+
   console.log(filteredCharacters);
   const renderDetail = (routeData) => {
     //Recieve by props all the url info
@@ -154,9 +164,11 @@ function App() {
               updateCheckboxes={updateCheckboxes}
               updateAliveCheckbox={updateAliveCheckbox}
               alive={showDead}
+              updateSortName={updateSortName}
+              checked={sortCheckboxes}
             />
 
-            <CharactersList data={filteredCharacters} />
+            <CharactersList data={filteredCharacters} isLoading={isLoading} />
           </Route>
           <div className="modalContainer">
             <Route

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 const CharacterNotFound = (props) => {
   return (
     <article>
-      <h1>ESTE PERSONAJE NO EXISTE</h1>
+      <h1>No encontrado</h1>
       <Link to="/">
-        <p> Volver </p>
+        <p> Volver al inicio</p>
       </Link>
     </article>
   );

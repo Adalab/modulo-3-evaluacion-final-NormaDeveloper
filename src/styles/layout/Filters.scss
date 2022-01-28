@@ -6,12 +6,12 @@
   background-color: $mainBackGrey;
   padding: 90px 40px 10px;
   font-size: 14px;
-  height: 500px;
+  height: 510px;
   @include tablet {
     font-size: 24px;
     text-align: justify;
     width: 50%;
-    height: 500px;
+    height: 530px;
   }
 
   &__checkboxes {
@@ -22,11 +22,22 @@
     @include tablet {
       height: 200px;
     }
+    @include desktop {
+      height: 290px;
+    }
   }
   &__select {
     margin-top: 20px;
     @include tablet {
       font-size: 24px;
     }
+  }
+
+  &__checkboxes__sort {
+    padding-top: 15px;
+  }
+
+  &__checkboxes__alive {
+    padding-top: 15px;
   }
 }

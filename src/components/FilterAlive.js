@@ -1,3 +1,4 @@
+import '../styles/layout/FilterAlive.scss';
 function FilterAlive(props) {
   const handleChangeCheckbox = (e) => {
     const checked = e.currentTarget.checked;
@@ -5,15 +6,15 @@ function FilterAlive(props) {
   };
 
   return (
-    <label className="checkbox" htmlFor="alive">
-      ¿Qiueres ver los personajes muertos?
+    <label className="aliveCheckboxLabel" htmlFor="alive">
+      <span>Ver sólo los personajes muertos</span>
       <input
         onChange={handleChangeCheckbox}
         type="checkbox"
         id="alive"
         name="alive"
         checked={props.alive}
-        className="box"
+        className="aliveBox"
       />
     </label>
   );

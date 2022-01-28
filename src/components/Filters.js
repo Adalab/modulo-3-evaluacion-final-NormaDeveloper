@@ -33,16 +33,19 @@ const Filters = (props) => {
           />
         </section>
         {/* -----------ALIVE----------- */}
-        <FilterAlive
-          updateAliveCheckbox={props.updateAliveCheckbox}
-          alive={props.alive}
-        />
-
+        <section className="form__checkboxes__alive">
+          <FilterAlive
+            updateAliveCheckbox={props.updateAliveCheckbox}
+            alive={props.alive}
+          />
+        </section>
         {/* -----------SORT-ALPHABETICALLY----------- */}
-        <SortName
-          updateSortName={props.updateSortName}
-          checked={props.checked}
-        />
+        <section className="form__checkboxes__sort">
+          <SortName
+            updateSortName={props.updateSortName}
+            checked={props.checked}
+          />
+        </section>
         <Button resetInputs={props.resetInputs} />
       </form>
     </div>

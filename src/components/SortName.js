@@ -1,3 +1,4 @@
+import '../styles/layout/SortName.scss';
 import propTypes from 'prop-types';
 function SortName(props) {
   const handleSortCheckbox = (e) => {
@@ -6,10 +7,10 @@ function SortName(props) {
   };
 
   return (
-    <label className="checksort--label" htmlFor="namesort">
-      Ordénalos alfabéticamente
+    <label className="sortCheckboxLabel" htmlFor="namesort">
+      <span>Ordénalos alfabéticamente</span>
       <input
-        className="checksort--input"
+        className="sortCheckboxInput"
         type="checkbox"
         name="namesort"
         id="namesort"

@@ -1,26 +1,35 @@
 @import '../core/variables.scss';
 
 .article {
-  background-color: $wine;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 99%;
-
-  border: 2px solid #680b0c;
-  padding: 10px;
   border-radius: 25px;
-
+  margin-left: 10px;
+  color: $wine;
+  padding: 0px 7px;
   @include tablet {
   }
 }
 
+.detail_list {
+  @include tablet {
+    font-size: 19px;
+  }
+}
 .detail_img {
   padding-top: 30px;
   margin-bottom: 10px;
   width: 100px;
   height: 160px;
   border-radius: 50%;
+  @include tablet {
+    padding-top: 30px;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 230px;
+    border-radius: 50%;
+  }
 }
 
 .linkDiv {
@@ -30,20 +39,24 @@
 }
 
 .wholeDetailDiv {
-  background-color: rgba(211, 166, 37, 0.582);
-  border: 2px solid $darkYellow;
-  border-radius: 20px;
-  transform: translate(50px, 20px);
   padding: 10px 20px 20px;
-  width: 80%;
+  background-image: url('../../images/backgroundDetail.png');
+  background-repeat: no-repeat;
+  background-size: 350px;
+  width: 350px;
+  height: 350px;
+  display: block;
+  margin: auto;
   @include tablet {
-    width: 32%;
-    height: 285px;
-    transform: translate(450px, 20px);
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    //margin: -25px 0 0 -25px;
+    background-size: 490px;
+    width: 490px;
+    height: 490px;
+  }
+
+  @include desktop {
+    background-size: 490px;
+    width: 490px;
+    height: 490px;
   }
 }
 
@@ -52,17 +65,28 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  margin: 2px 5px 0px 0px;
+  @include tablet {
+    margin: 5px 15px 0px 0px;
+  }
 }
 
 .titleDetail {
-  color: $darkYellow;
+  color: $wine;
   font-size: 18px;
+  @include tablet {
+    font-size: 22px;
+  }
 }
 
 .divHeight {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
   @include tablet {
+  }
+  @include desktop {
     height: 100vh;
-    display: flex;
-    align-items: center;
   }
 }

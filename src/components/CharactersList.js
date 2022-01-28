@@ -1,8 +1,9 @@
 import '../styles/layout/CharactersList.scss';
 import Character from './Character';
 import propTypes from 'prop-types';
+import loader from '../images/LOADERharry.gif';
 const CharactersList = (props) => {
-  const { data } = props;
+  const { data, isLoading } = props;
   const htmlList = data.map((character, index) => {
     return (
       <li key={index}>
@@ -10,13 +11,26 @@ const CharactersList = (props) => {
       </li>
     );
   });
-  //If data arr is empty, then shows loading
-  //Render <p> while while loading data
-  return data.length === 0 ? (
-    <p className="notExist">No existe ningún personaje con ese nombre</p>
-  ) : (
-    <ul className="characters_list">{htmlList}</ul>
-  );
+
+  if (!isLoading) {
+    return data.length === 0 ? (
+      <p className="notExist">
+        Ningún personaje coincide con tu búsqueda. Intenta modificar los filtros
+        de la búsqueda
+      </p>
+    ) : (
+      <ul className="characters_list">{htmlList}</ul>
+    );
+  } else {
+    return (
+      <img
+        src={loader}
+        alt="Cargando datos"
+        title="Cargando datos"
+        className="loader"
+      />
+    );
+  }
 };
 
 CharactersList.propTypes = {

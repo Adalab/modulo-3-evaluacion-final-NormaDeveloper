@@ -22,6 +22,7 @@ function App() {
   const [checkboxSelectedList, setCheckboxSelectedList] = useState(
     ls.get('checkboxSelectedList', [])
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   //Global var
   const URL = 'https://hp-api.herokuapp.com/api/characters/house/';
@@ -39,6 +40,7 @@ function App() {
 
   //UseEffect Api
   useEffect(() => {
+    setIsLoading(true);
     getApiData(URL, filterHouse).then((dataFromApi) => {
       const filterdData = dataFromApi.map((each, index) => {
         const cleanObject = {
@@ -60,6 +62,7 @@ function App() {
 
       //Save filtered object in Data
       setData(filterdData);
+      setIsLoading(false);
     });
   }, [filterHouse]);
 
@@ -145,7 +148,7 @@ function App() {
               updateCheckboxes={updateCheckboxes}
             />
 
-            <CharactersList data={filteredCharacters} />
+            <CharactersList data={filteredCharacters} isLoading={isLoading} />
           </Route>
           <div className="modalContainer">
             <Route

@@ -3,6 +3,7 @@ import FilterHouse from './FilterHouse';
 import FilterSpecies from './FilterSpecies';
 import Button from './Button';
 import '../styles/layout/Filters.scss';
+import FilterAlive from './FilterAlive';
 
 const Filters = (props) => {
   return (
@@ -30,6 +31,12 @@ const Filters = (props) => {
             updateCheckboxes={props.updateCheckboxes}
           />
         </section>
+        {/* -----------ALIVE----------- */}
+
+        <FilterAlive
+          updateAliveCheckbox={props.updateAliveCheckbox}
+          alive={props.alive}
+        />
 
         <Button resetInputs={props.resetInputs} />
       </form>

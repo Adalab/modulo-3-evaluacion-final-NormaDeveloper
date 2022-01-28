@@ -10,7 +10,7 @@ import CharacterNotFound from './CharacterNotFound';
 import Header from './Header';
 import Footer from './Footer';
 import placeholderImg from '../images/placeholderPhoto.png';
-import PlaySound from './PlaySound';
+// import PlaySound from './PlaySound';
 
 function App() {
   //State variables
@@ -22,6 +22,7 @@ function App() {
   const [checkboxSelectedList, setCheckboxSelectedList] = useState(
     ls.get('checkboxSelectedList', [])
   );
+  const [showDead, setShowDead] = useState(false);
 
   //Global var
   const URL = 'https://hp-api.herokuapp.com/api/characters/house/';
@@ -79,6 +80,10 @@ function App() {
         );
   };
 
+  const updateAliveCheckbox = (checked) => {
+    setShowDead(checked);
+  };
+
   const resetInputs = () => {
     setFilterName('');
     setFilterHouse('gryffindor');
@@ -105,8 +110,13 @@ function App() {
       checkboxSelectedList.length === 0
         ? true
         : checkboxSelectedList.includes(character.species)
-    );
+    )
+    .filter((character) => {
+      console.log(character.alive);
 
+      return showDead ? character.alive === 'Muerto' : true;
+    });
+  console.log(filteredCharacters);
   const renderDetail = (routeData) => {
     //Recieve by props all the url info
     //But we need just the ID (path="/character/:characterId")
@@ -132,7 +142,7 @@ function App() {
       <main className="main">
         <Switch>
           <Route exact path="/">
-            <PlaySound />
+            {/* <PlaySound /> */}
             <Filters
               updateFilterName={updateFilterName}
               filterName={filterName}
@@ -142,6 +152,8 @@ function App() {
               data={data}
               checkboxSelectedList={checkboxSelectedList}
               updateCheckboxes={updateCheckboxes}
+              updateAliveCheckbox={updateAliveCheckbox}
+              alive={showDead}
             />
 
             <CharactersList data={filteredCharacters} />

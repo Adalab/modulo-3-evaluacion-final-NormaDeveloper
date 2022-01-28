@@ -5,7 +5,7 @@ const FilterHouse = (props) => {
   };
   return (
     <label htmlFor="house" className="houseLabel">
-      Selecciona la casa
+      <span className="houseSpan">Selecciona la casa</span>
       <select
         onChange={handleFilterHouse}
         name="house"

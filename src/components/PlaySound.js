@@ -16,7 +16,6 @@ const PlaySound = (
         onPlaying={handleSongPlaying}
         onFinishedPlaying={handleSongFinishedPlaying}
       />
-      ;
     </div>
   );
 };

@@ -9,11 +9,16 @@
   margin-left: 10px;
   color: #4a4a4a;
   background-color: $mainBackGrey;
+  width: 100%;
 
   @include tablet {
     width: 300px;
     font-size: 18px;
     color: rgb(85, 79, 79);
+  }
+
+  @include desktop {
+    width: 100%;
   }
 
   &:focus {
@@ -28,4 +33,11 @@
 
 .houseLabel {
   color: $darkYellow;
+  font-size: 18px;
+}
+
+.houseSpan {
+  @include tablet {
+    display: block;
+  }
 }

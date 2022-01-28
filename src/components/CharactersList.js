@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import loader from '../images/LOADERharry.gif';
 const CharactersList = (props) => {
   const { data, isLoading } = props;
+  console.log(data);
   const htmlList = data.map((character, index) => {
     return (
       <li key={index}>

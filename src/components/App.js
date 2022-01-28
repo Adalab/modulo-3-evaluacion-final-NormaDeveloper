@@ -107,18 +107,17 @@ function App() {
       checkboxSelectedList.length === 0
         ? true
         : checkboxSelectedList.includes(character.species)
-    );
-
-  const allFilteredCharacters = sortCheckboxes
-    ? filteredCharacters.sort(function (a, b) {
+    )
+    .sort(function (a, b) {
+      if (sortCheckboxes) {
         if (a.name > b.name) {
           return 1;
         } else if (a.name < b.name) {
           return -1;
         }
         return 0;
-      })
-    : false;
+      }
+    });
 
   const renderDetail = (routeData) => {
     //Recieve by props all the url info
@@ -159,10 +158,7 @@ function App() {
               checked={sortCheckboxes}
             />
 
-            <CharactersList
-              data={allFilteredCharacters}
-              isLoading={isLoading}
-            />
+            <CharactersList data={filteredCharacters} isLoading={isLoading} />
           </Route>
           <div className="modalContainer">
             <Route

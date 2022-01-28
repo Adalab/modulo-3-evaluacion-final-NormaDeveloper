@@ -22,6 +22,7 @@ function App() {
   const [checkboxSelectedList, setCheckboxSelectedList] = useState(
     ls.get('checkboxSelectedList', [])
   );
+  const [sortCheckboxes, setSortCheckboxes] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   //Global var
@@ -83,6 +84,10 @@ function App() {
         );
   };
 
+  const updateSortName = (checked) => {
+    setSortCheckboxes(checked);
+  };
+
   const resetInputs = () => {
     setFilterName('');
     setFilterHouse('gryffindor');
@@ -97,19 +102,23 @@ function App() {
         .toLocaleLowerCase()
         .includes(filterName.toLocaleLowerCase())
     )
-    .sort(function (a, b) {
-      if (a.name > b.name) {
-        return 1;
-      } else if (a.name < b.name) {
-        return -1;
-      }
-      return 0;
-    })
+
     .filter((character) =>
       checkboxSelectedList.length === 0
         ? true
         : checkboxSelectedList.includes(character.species)
     );
+
+  const allFilteredCharacters = sortCheckboxes
+    ? filteredCharacters.sort(function (a, b) {
+        if (a.name > b.name) {
+          return 1;
+        } else if (a.name < b.name) {
+          return -1;
+        }
+        return 0;
+      })
+    : false;
 
   const renderDetail = (routeData) => {
     //Recieve by props all the url info
@@ -146,9 +155,14 @@ function App() {
               data={data}
               checkboxSelectedList={checkboxSelectedList}
               updateCheckboxes={updateCheckboxes}
+              updateSortName={updateSortName}
+              checked={sortCheckboxes}
             />
 
-            <CharactersList data={filteredCharacters} isLoading={isLoading} />
+            <CharactersList
+              data={allFilteredCharacters}
+              isLoading={isLoading}
+            />
           </Route>
           <div className="modalContainer">
             <Route

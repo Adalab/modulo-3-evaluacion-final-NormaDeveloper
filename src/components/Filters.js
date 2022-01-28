@@ -3,6 +3,7 @@ import FilterHouse from './FilterHouse';
 import FilterSpecies from './FilterSpecies';
 import Button from './Button';
 import '../styles/layout/Filters.scss';
+import SortName from './SortName';
 
 const Filters = (props) => {
   return (
@@ -30,7 +31,11 @@ const Filters = (props) => {
             updateCheckboxes={props.updateCheckboxes}
           />
         </section>
-
+        {/* -----------SORT-ALPHABETICALLY----------- */}
+        <SortName
+          updateSortName={props.updateSortName}
+          checked={props.checked}
+        />
         <Button resetInputs={props.resetInputs} />
       </form>
     </div>

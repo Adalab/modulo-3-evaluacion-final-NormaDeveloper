@@ -1,5 +1,6 @@
 import speciesTranslate from '../services/speciesTranslate';
 import '../styles/layout/FilterSpecies.scss';
+import propTypes from 'prop-types';
 const FilterSpecies = (props) => {
   const getSpecies = () => {
     const species = props.data.map((user) => user.species);
@@ -37,6 +38,10 @@ const FilterSpecies = (props) => {
       {htmlCheckboxes}
     </>
   );
+};
+
+FilterSpecies.propTypes = {
+  handleChangeCheckbox: propTypes.func.isRequired,
 };
 
 export default FilterSpecies;

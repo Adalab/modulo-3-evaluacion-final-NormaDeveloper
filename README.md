@@ -1,6 +1,6 @@
 # Module 3: Final assessment - React
 
-## NOTE: Turn on your volume 🎶 when visiting this web 😉
+
 
 The exercise consists of developing a web page with a list of Harry Potter characters, which we can filter by the name of the character. We are going to use React to do it.
 

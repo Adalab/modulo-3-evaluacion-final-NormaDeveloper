@@ -1,18 +1,20 @@
 
-# Harry Potter Character Search Engine Web Application developed with React
+# Harry Potter Character Search Engine Web Application 
+## Developed with React and mobile first responsive layout
 
-## **Module 3 of Adalab Bootcamp: Final assessment exercise**
 
-## Project developed with: 
+### Project also developed with: 
 ### 1. Attention to detail 🔎
 ### 2. Clean and tidy code 🧹
 ### 3. Fun 🎉 <br> <br> 
 
 
 
-## Description
 
-This is a web application search engine for Harry Potter characters developed with REACT. It allows you to filter the characters by name, house, species, dead characters and also sort them alphabetically. 
+### Description
+
+This is a web application search engine for Harry Potter characters developed with REACT. It allows you to filter the characters by name, house, species, dead characters and also sort them alphabetically. This was the final assessment exercise of Module 3 at Adalab Bootcamp.
+
 
 
 ### Tech stack and Tools
@@ -48,3 +50,10 @@ This is a web application search engine for Harry Potter characters developed wi
 8. Extra filters
 
 9. Reset Button
+
+
+
+## About me
+
+ [![](https://i.imgur.com/RxMHei3.png)](https://www.linkedin.com/in/normarivas)         [![](https://i.imgur.com/C85yS6z.png)](https://twitter.com/NormaRivas_)  
+ 

@@ -31,25 +31,22 @@ This is a web application search engine for Harry Potter characters developed wi
 
 <img align="center" width="80" height="80" src="https://i.imgur.com/cYleJs5.png">    <img align="center" width="80" height="80" src="https://user-images.githubusercontent.com/93437541/156566142-c2800ce7-c17b-4318-8a32-09c96c9c7664.svg"> <img align="center" width="60" height="60" src="https://user-images.githubusercontent.com/93437541/156566325-442c9417-50fb-4dcb-b49f-964aa871d9f2.png"> <img align="center" width="100" height="60" src="https://user-images.githubusercontent.com/93437541/156566653-a6e5eb39-4a80-4563-9ced-81528d292fe4.png">  <img align="center" width="70" height="70" src="https://user-images.githubusercontent.com/93437541/156567140-3761f735-891f-4c82-98d7-990bd62b5a6e.png">  
 
+## Features
+1. We use the service https://hp-api.herokuapp.com/ that returns information about Harry Potter characters filtered by the house they belong to. 
+
+About each character, it is displayed:
+
+<ul>
+ <li>Picture</li>
+  <li>Name</li>
+  <li>Species</li>
+ </ul>
+
+2. You can search the characters by name, house, species, dead characters and you can sort the characters alphabetically.  You can also clear the filters with the reset button.
+
+3. When you click on a character's card, its information appears in full screen. Routes and React Router DOM have been used to develop this. In the detail card appears the picture, the name, the species, the house he/she belongs to, if he/she is alive or dead and his/her gender.
 
 
-1. List of characters
-
-2. Character filtering
-
-3. Filtering by house Note: By default, when the page loads, the gryffindor house should be displayed
-
-4. Character list components
-
-5. Character detail
-
-6. Quality details
-
-7. Sorting
-
-8. Extra filters
-
-9. Reset Button
 
 
 

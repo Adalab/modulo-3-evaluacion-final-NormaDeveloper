@@ -10,9 +10,9 @@
 
 
 
-## Assignment
+## Description
 
-The exercise consists of developing a web application with a list of Harry Potter characters, which we can filter by the name of the character, for example. This project is developed with React.
+This is a web application search engine for Harry Potter characters developed with REACT. It allows you to filter the characters by name, house, species, dead characters and also sort them alphabetically. 
 
 
 ### Tech stack and Tools

@@ -46,7 +46,8 @@ About each character, it is displayed:
 
 3. When you click on a character's card, its information appears in full screen. Routes and React Router DOM have been used to develop this. In the detail card appears the picture, the name, the species, the house he/she belongs to, if he/she is alive or dead and his/her gender.
 
-
+4. Local storage
+Last search is stored in the localStorage. So when reloading the page the list of characters is displayed.
 
 
 
